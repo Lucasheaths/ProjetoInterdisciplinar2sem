@@ -1,0 +1,5 @@
+package Solucao;
+
+public class emitirRelatorio extends Controle{
+
+}

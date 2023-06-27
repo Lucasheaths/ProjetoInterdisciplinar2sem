@@ -1,0 +1,15 @@
+package Solucao;
+
+import ProjetoInterdiciplinar.ControleEstoque;
+
+public class Estoque extends Controle {
+
+	public static void main(String[] args) {
+		
+		Controle();
+
+	}
+
+	private static void Controle() {}
+
+}

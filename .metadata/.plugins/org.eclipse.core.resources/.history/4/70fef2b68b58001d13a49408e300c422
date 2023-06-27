@@ -1,0 +1,93 @@
+package Solucao;
+
+import javax.swing.JOptionPane;
+
+import ProjetoInterdiciplinar.ControleEstoque;
+
+public class Estoque {
+
+	public static void main(String[] args) {
+		
+		cadastraProduto cp = new cadastraProduto();
+		consultaProduto cons = new consultaProduto();
+		alterarDados at = new alterarDados();
+		removerInformacoes ri = new removerInformacoes();
+		
+		double codProcura;
+		int achou;
+		char resp = 's';
+		double codVal [][] = new double [8][200];		
+		String nomeProd [] = new String [200];			
+		int indiceVazio=0, op;	
+		char confirmaCad;
+		int indiceCad, indiceNomeCad;
+		double codCad;
+		String nomeCad;
+		double prCusto=0,valVenda=0, codProd;
+		int indice;
+		char confirma='n';
+		
+		Controle();
+
+	}
+
+	private static void Controle(){}
+	
+	do{ 
+		op = Integer.parseInt(JOptionPane.showInputDialog(
+				"                Sistema de controle de estoque\n\n\n"+
+				"                              Menu principal \n\n" +
+				"1  - Cadastrar produto \n"+ "" +
+				"2  - Consulta de produtos (Informando código)\n" +
+				"3  - Emitir relatório de compras \n" +
+				"4 - Alterar preços de produto (custo/venda) \n"+
+				"5 - Sair do Sistema"));
+
+		switch (op) {
+		
+		case 1:
+			indiceVazio = cadastro(nomeProd, codVal, indiceVazio);
+			break;
+		
+		case 2:
+			consProdCod(nomeProd, codVal, indiceVazio);
+			break;
+		
+		case 3:
+			relCompras(nomeProd, codVal, indiceVazio);
+			break;
+			
+		case 4:
+			alteraValores(nomeProd, codVal, indiceVazio);
+			break;
+			
+		case 5:
+			remover(nomeProd, codVal, indiceVazio);
+		    break;  
+			
+		case 6:
+			JOptionPane.showMessageDialog(null, "Finalizando o sistema...");
+			break;
+			
+		default:
+			JOptionPane.showMessageDialog(null, "Código inválido");
+			break;
+		}
+		
+	}while(op!=6);
+	
+	public static int procCod (String nomeProd[], double codVal[][], int indiceVazio, double buscaCod ) {
+		int i=0;
+		
+		while ((i<indiceVazio)&&(buscaCod!=codVal[1][i])) {
+			i++;
+		}
+		if (buscaCod!=codVal[1][i]) {
+			return -1;
+		}
+			else {
+				return i;
+		}
+	}
+
+}

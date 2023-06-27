@@ -1,0 +1,67 @@
+package Solucao;
+
+import javax.swing.JOptionPane;
+
+public class cadastraProduto extends Controle{
+	
+	private static int cadastro (String nomeProd[], double codVal[][], int indiceVazio) {
+		char resp='s', confirmaCad;
+		int indiceCad, indiceNomeCad;
+		double prCusto, valVenda, codCad;
+		String nomeCad;
+		
+		do {
+			if (indiceVazio<nomeProd.length) {
+				nomeCad = JOptionPane.showInputDialog("Digite o nome do produto: ");
+				indiceCad=procNome(nomeProd, codVal, indiceVazio, nomeCad); 
+				if (indiceCad != -1) { 
+					JOptionPane.showMessageDialog(null, "Produto já cadastrado com o código: "+codVal[1][indiceCad]); 
+				}
+				else {
+					codCad = Double.parseDouble(JOptionPane.showInputDialog("Digite o código do produto"));
+					indiceNomeCad = procCod(nomeProd, codVal, indiceVazio, codCad); 
+					if (indiceNomeCad != -1) {
+						JOptionPane.showMessageDialog(null, "Código já cadastrado para o produto: "+nomeProd[indiceNomeCad]);
+					}
+					else {
+						prCusto = Double.parseDouble(JOptionPane.showInputDialog("Digite o preço de custo: "));
+						valVenda = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de venda: "));
+						
+						confirmaCad = (JOptionPane.showInputDialog(
+								"           Confirmação de cadastro"+"\n\n"+
+								"Código: "+codCad+"\n"+
+								"Nome do produto: "+nomeCad+"\n"+
+								"Preço de custo: R$"+prCusto+"\n"+
+								"Valor de venda: R$"+valVenda+"\n\n"+
+								"Confirma entrada dos dados (S/N)?")).charAt(0);
+						
+						if ((confirmaCad=='s')||(confirmaCad=='S')){
+						
+						execCad(nomeProd, codVal, indiceVazio, codCad, nomeCad, prCusto, valVenda);
+						indiceVazio=(indiceVazio+1);
+						}
+					}
+				}
+			
+				resp = (JOptionPane.showInputDialog("Deseja cadastrar outro produto (S/N)?")).charAt(0);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Limite de cadastros alcançado");
+				resp = 'n';
+			}
+		} while ((resp=='s') || (resp=='S')); 
+		return indiceVazio;
+	}
+
+	private static void execCad(String[] nomeProd, double[][] codVal, int indiceVazio, double codCad, String nomeCad,
+			double prCusto, double valVenda) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static int procNome(String[] nomeProd, double[][] codVal, int indiceVazio, String nomeCad) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

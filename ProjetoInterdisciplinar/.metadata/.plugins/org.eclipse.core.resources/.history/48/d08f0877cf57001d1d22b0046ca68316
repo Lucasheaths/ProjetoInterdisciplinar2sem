@@ -1,0 +1,11 @@
+package Solucao;
+
+public abstract class Controle {
+	
+	cadastraProduto cp = new cadastraProduto();
+	consultaProduto cons = new consultaProduto();
+	emitirRelatorio er = new emitirRelatorio();
+	alterarDados at = new alterarDados();
+	removerInformacoes ri = new removerInformacoes();
+
+}

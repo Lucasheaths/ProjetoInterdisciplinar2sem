@@ -1,0 +1,49 @@
+package Solucao;
+
+import javax.swing.JOptionPane;
+
+public class alterarDados extends Controle{
+	
+	public static void alterarDados(String nomeProd[], double codVal[][], int indiceVazio){
+		double prCusto=0,valVenda=0, codProd;
+		int indice;
+		char confirma='n';
+		
+		codProd = Double.parseDouble(JOptionPane.showInputDialog("Digite o código do produto que deseja alterar: "));
+		indice = procCod(nomeProd, codVal, indiceVazio, codProd);
+		if (indice == -1){
+			JOptionPane.showMessageDialog(null, "O código informado: "+codProd+" não foi localizado");
+		}
+			else{
+				confirma = (JOptionPane.showInputDialog( 
+						"          Dados atuais do produto: \n\n"+
+						"Código: "+codProd+"\n"+
+						"Nome do produto: "+nomeProd[indice]+"\n"+
+						"Preço de custo: R$"+codVal[5][indice]+"\n"+
+						"Valor de venda: R$"+codVal[6][indice]+"\n\n"+
+						"Deseja alterar este produto (S/N)?")).charAt(0);
+				if ((confirma == 's')||(confirma == 'S')){
+					prCusto = Double.parseDouble(JOptionPane.showInputDialog("Informe o novo preço de custo: R$"));
+					valVenda = Double.parseDouble(JOptionPane.showInputDialog("Informe o novo valor de venda: R$"));
+									
+					confirma = (JOptionPane.showInputDialog( 
+							"          Novos dados do produto: \n\n"+
+							"Código: "+codProd+"\n"+
+							"Nome do produto: "+nomeProd[indice]+"\n"+
+							"Preço de custo: R$"+prCusto+"\n"+
+							"Valor de venda: R$"+valVenda+"\n\n"+
+							"Confirma alterações (S/N)?")).charAt(0);
+					if ((confirma == 's')||(confirma == 'S')){
+						codVal[5][indice] = prCusto;
+						codVal[6][indice] = valVenda;
+						JOptionPane.showMessageDialog(null, "" +
+								"                                                             AVISO!!! \n\n"+
+								"  Ao gerar relatórios, os valores são baseados nos valores atuais do produto.\n"+
+								" Ou seja, os valores de venda, estoque, faturamento, etc. serão baseados nos\n"+
+								"                                      valores que você acabou de confirmar.");
+					}
+				}
+			}
+	}
+
+}

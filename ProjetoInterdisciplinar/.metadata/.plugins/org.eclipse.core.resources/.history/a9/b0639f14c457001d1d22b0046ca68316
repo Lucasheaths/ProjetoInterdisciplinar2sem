@@ -1,0 +1,13 @@
+package Solucao;
+
+import ProjetoInterdiciplinar.ControleEstoque;
+
+public class Estoque {
+
+	public static void main(String[] args) {
+		
+		Controle ct = new Controle();
+
+	}
+
+}

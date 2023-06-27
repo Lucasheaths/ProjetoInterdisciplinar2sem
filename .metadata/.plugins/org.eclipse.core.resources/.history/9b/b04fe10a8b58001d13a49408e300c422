@@ -1,0 +1,20 @@
+package Solucao;
+
+import ProjetoInterdiciplinar.ControleEstoque;
+
+public class Estoque {
+
+	public static void main(String[] args) {
+		
+		cadastraProduto cp = new cadastraProduto();
+		consultaProduto cons = new consultaProduto();
+		alterarDados at = new alterarDados();
+		removerInformacoes ri = new removerInformacoes();
+		
+		Controle();
+
+	}
+
+	private static void Controle() {}
+
+}
